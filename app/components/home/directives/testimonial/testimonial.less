@@ -1,0 +1,41 @@
+@import "../../../../assets/less/fonts";
+
+.container-testimonial {
+  border: 2px solid #ccc;
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 16px;
+  margin: 16px 0
+}
+
+.container-testimonial::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.container-testimonial img {
+  float: left;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.container-testimonial span {
+  font-size: @subtextSize;
+  margin-right: 15px;
+}
+
+@media (max-width: 500px) {
+  .container-testimonial {
+      text-align: center;
+  }
+  .container-testimonial img {
+      margin: auto;
+      float: none;
+      display: block;
+  }
+}
+
+.name-testimonial {
+  font-size: @subtitleSize !important;
+}

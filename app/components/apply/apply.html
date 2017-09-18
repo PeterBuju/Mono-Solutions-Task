@@ -1,0 +1,70 @@
+<div class="container apply-wrap animated fadeInDown">
+  <div class="apply-title">{{vm.getLabel('applyText')}}</div>
+  <form ng-submit="vm.submit()" class="defaultSize" name="userForm">
+    <div class="form-group" ng-class="{ 'has-error' : vm.validateInput('firstName')}">
+      <label for="firstName">{{vm.getLabel('firstName')}}: </label>
+      <input type="text" class="form-control" id="firstName" placeholder="{{vm.getLabel('firstNamePH')}}" name="firstName" ng-model="vm.application.firstName" ng-pattern ="/^[a-zA-Z\s]*$/" required input-focus="true">
+      <div ng-show="vm.validateInput('firstName')">
+        <p ng-show="vm.errorRequired('firstName')" class="help-block">{{vm.getLabel('required')}}</p>
+        <p ng-show="vm.errorPattern('firstName')" class="help-block">{{vm.getLabel('lettersSpaces')}}</p>
+      </div>
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error' : vm.validateInput('lastName')}">
+      <label for="lastName">{{vm.getLabel('lastName')}}: </label>
+      <input type="text" class="form-control" id="lastName" placeholder="{{vm.getLabel('lastNamePH')}}" name="lastName" ng-model="vm.application.lastName" ng-pattern="/^[a-zA-Z\s]*$/" required>
+      <div ng-show="vm.validateInput('lastName')">
+        <p ng-show="vm.errorRequired('lastName')" class="help-block">{{vm.getLabel('required')}}</p>
+        <p ng-show="vm.errorPattern('lastName')" class="help-block">{{vm.getLabel('lettersSpaces')}}</p>
+      </div>
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error' : vm.validateInput('email') }">
+      <label for="email">{{vm.getLabel('email')}}:</label>
+      <input type="email" class="form-control" id="email" placeholder="{{vm.getLabel('emailPH')}}" name="email" ng-model="vm.application.email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required>
+      <div ng-show="vm.validateInput('email')">
+        <p ng-show="vm.errorRequired('email')" class="help-block">{{vm.getLabel('required')}}</p>
+        <p ng-show="vm.errorPattern('email')"class="help-block">{{vm.getLabel('invalidEmail')}}</p>
+      </div>
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error' : vm.validateInput('dateOfBirth') }">
+      <label for="dateOfBirth">{{vm.getLabel('dateOfBirth')}}:</label>
+        <p class="input-group">
+          <input id="dateOfBirth" placeholder="{{vm.getLabel('dateOfBirthPH')}}" name="dateOfBirth" type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.application.dateOfBirth" is-open="vm.opened" datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" alt-input-formats="vm.altInputFormats" max-date="vm.maxDate" ng-init=""/>
+          <span class="input-group-btn" ng-model="vm.application.dateOfBirth">
+            <button type="button" class="btn btn-default" ng-click="vm.open()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+          <div ng-show="vm.validateInput('dateOfBirth')">
+            <p ng-show="vm.errorRequired('dateOfBirth')" class="help-block">{{vm.getLabel('required')}}</p>
+            <p ng-show="vm.errorDate('dateOfBirth')" class="help-block">{{vm.getLabel('invalidDate')}}</p>
+          </div>
+        </p>
+    </div>
+  
+    <div class="form-group">
+      <label for="course">{{vm.getLabel('course')}}:</label>
+      <select class="form-control" id="course" name="course" ng-model="vm.application.course" ng-options="item as item.title for item in vm.courseList">
+      </select>
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error' : vm.validateInput('motivation')}">
+      <label for="motivation">{{vm.getLabel('motivation')}}:</label>
+      <textarea class="form-control" rows="5" id="motivation" name="motivation" ng-model="vm.application.motivation" required></textarea>
+      <div ng-show="vm.validateInput('motivation')">
+        <p ng-show="vm.errorRequired('motivation')" class="help-block">{{vm.getLabel('required')}}</p>
+      </div>
+    </div>
+    
+
+    <div class="form-group">
+      <label for="resume">{{vm.getLabel('resume')}}:</label>
+      <input type="file" id="resume" name="resume" ng-model="vm.application.resume" accept="application/pdf" required/> 
+    </div>
+
+<!--     <div class="checkbox">
+      <label><input type="checkbox" name="remember" ng-model="vm.rememberMe">{{vm.getLabel('rememberMe')}}</label>
+    </div> -->
+    <button type="submit" class="btn btn-default defaultSize">{{vm.getLabel('submit')}}</button>
+  </form>
+</div>
