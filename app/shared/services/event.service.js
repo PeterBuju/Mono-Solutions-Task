@@ -4,8 +4,8 @@ angular
 	.module("app.services")
 	.service("eventService", eventService);
 
-eventService.$inject = ["$rootScope", "languageService", "testimonialGroupService", "$timeout"];
-function eventService($rootScope, ls, testimonialGroupService, $timeout){
+eventService.$inject = ["$rootScope", "languageService", "$timeout"];
+function eventService($rootScope, ls, $timeout){
 	// jshint validthis: true
 	var vm = this;
 

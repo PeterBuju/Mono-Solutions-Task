@@ -2,8 +2,6 @@
 
 var app = angular.module("myApp", [
 	"app.shared",
-	//"app.services",
-	//"app.directives",
 	"app.components",
 	"ngStorage"
 	])
